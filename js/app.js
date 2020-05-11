@@ -30,19 +30,25 @@ function resolver(){
     resetear();
     display.textContent = res;
 }
-function validaPunto(){
-    if(valor1 == 0){
-        alert(valor1);
+function validaPunto(ingreso){
+    if(ingreso == "."){
         valor1 = '0.';
-        alert(valor1);
         
-    }else if(valor1.indexOf('.') == -1){
-        alert(valor1);
+    }else if(ingreso.indexOf('.') == "."){
+        alert(".  " +valor1);
         valor1 += '.';
         alert(valor1);
     }
 }
-
+function validaIngreso(ingreso){
+ //eliminar el 0 que se encuentra por defecto en el display   
+    if(display.textContent == "0"){
+        display.textContent = ingreso;
+    }
+    else{
+        display.textContent += ingreso;
+    }
+}
 
 var calculadora = {
     init: function(){
@@ -70,38 +76,38 @@ var calculadora = {
 
         //eventos
         uno.onclick = function(e){
-            display.textContent = display.textContent + "1";
+            validaIngreso(1);
         }
         dos.onclick = function(e){
-            display.textContent = display.textContent + "2";
+            validaIngreso(2);
         }
         tres.onclick = function(e){
-            display.textContent = display.textContent + "3";
+            validaIngreso(3);
         }
         cuatro.onclick = function(e){
-            display.textContent = display.textContent + "4";
+            validaIngreso(4);
         }
         cinco.onclick = function(e){
-            display.textContent = display.textContent + "5";
+            validaIngreso(5);
         }
         seis.onclick = function(e){
-            display.textContent = display.textContent + "6";
+            validaIngreso(6);
         }
         siete.onclick = function(e){
-            display.textContent = display.textContent + "7";
+            validaIngreso(7);
         }
         ocho.onclick = function(e){
-            display.textContent = display.textContent + "8";
+            validaIngreso(8);
         }
         nueve.onclick = function(e){
-            display.textContent = display.textContent + "9";
+            validaIngreso(9);
         }
         cero.onclick = function(e){
-            display.textContent = display.textContent + "0";
+            validaIngreso(0);
         }
         punto.onclick = function(e){
-            validaPunto();
-            display.textContent = display.textContent + ".";
+            //display.textContent = display.textContent + ".";
+            validaPunto(".");
         }
 
         on.onclick = function(e){
