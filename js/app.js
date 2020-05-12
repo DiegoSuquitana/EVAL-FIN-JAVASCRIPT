@@ -30,14 +30,26 @@ function resolver(){
     resetear();
     display.textContent = res;
 }
-function validaPunto(ingreso){
-    if(ingreso == "."){
-        valor1 = '0.';
-        
-    }else if(ingreso.indexOf('.') == "."){
-        alert(".  " +valor1);
-        valor1 += '.';
-        alert(valor1);
+function validaPunto(ingPunto){
+//validaciones al dar click en el punto(.)
+    if(display.textContent == 0){
+        display.textContent = '0.';
+        punto.disabled = "true";
+    }
+    else
+    { 
+        if(display.textContent == "."){
+            display.textContent = '0.';
+            punto.disabled = "true";
+        }
+        else
+        { 
+            if(display.textContent.indexOf(".") == -1)
+            {
+                display.textContent += ingPunto;
+            }
+                
+        }        
     }
 }
 function validaIngreso(ingreso){
@@ -108,6 +120,7 @@ var calculadora = {
         punto.onclick = function(e){
             //display.textContent = display.textContent + ".";
             validaPunto(".");
+            //document.getElementById('punto').disabled = "true";
         }
 
         on.onclick = function(e){
