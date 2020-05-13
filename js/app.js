@@ -61,6 +61,18 @@ function validaIngreso(ingreso){
         display.textContent += ingreso;
     }
 }
+function validaSigno(){
+//validacion para el signo
+    if(display.textContent == 0){
+        display.textContent = 0;
+    }
+    else{
+        num=Number(display.textContent);
+        num = -num;
+        x = String(num);
+        display.textContent = x;
+    }
+}
 
 var calculadora = {
     init: function(){
@@ -73,7 +85,7 @@ var calculadora = {
         var division = document.getElementById('dividido');
         var igual = document.getElementById('igual');
         var punto = document.getElementById('punto');
-        var signo = document.getElementById('signo');
+        var signo = document.getElementById('sign');
         var on = document.getElementById('on');
         var uno = document.getElementById("1");
         var dos = document.getElementById('2');
@@ -122,9 +134,11 @@ var calculadora = {
             validaPunto(".");
             //document.getElementById('punto').disabled = "true";
         }
-
         on.onclick = function(e){
             resetear();
+        }
+        signo.onclick = function(e){
+            validaSigno();
         }
         suma.onclick = function(e){
             valor1 = display.textContent;
