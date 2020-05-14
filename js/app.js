@@ -13,6 +13,7 @@ function resetear(){
 }
 function resolver(){
     var res = 0;
+    var tot = "";
     switch(operacion){
         case "+":
             res = parseFloat(valor1) + parseFloat(valor2);
@@ -28,7 +29,12 @@ function resolver(){
             break;
     }
     resetear();
-        display.textContent = res;
+//validacion de resultado en el display 8 caracteres
+    res = res.toString();
+    for(i=0 ; i < 8 ; i++){
+        tot += res[i];
+    }
+    display.textContent = tot;
 }
 function validaPunto(ingPunto){
 //validaciones al dar click en el punto(.)
@@ -99,7 +105,8 @@ var calculadora = {
         var cero = document.getElementById('0');
         document.onkeypress = this.eventoTamano;
         //eventos
-        uno.onclick = function(e){    
+        uno.onclick = function(e){   
+            //validacion de caracteres en el disp 
            // uno.addEventListener("click",function(){
                 if(display.textContent.length < 8){
                     validaIngreso(1);        
