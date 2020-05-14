@@ -28,7 +28,7 @@ function resolver(){
             break;
     }
     resetear();
-    display.textContent = res;
+        display.textContent = res;
 }
 function validaPunto(ingPunto){
 //validaciones al dar click en el punto(.)
@@ -101,77 +101,77 @@ var calculadora = {
         //eventos
         uno.onclick = function(e){    
            // uno.addEventListener("click",function(){
-                if(display.textContent.length == 8){
+                if(display.textContent.length < 8){
                     validaIngreso(1);        
                 }
             //})
         }
         dos.onclick = function(e){
             //dos.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(2);        
                 }
             //})
         }
         tres.onclick = function(e){
             //tres.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(3);        
                 }
             //})
         }
         cuatro.onclick = function(e){
             //cuatro.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(4);        
                 }
             //})
         }
         cinco.onclick = function(e){
             //cinco.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(5);        
                 }
             //})
         }
         seis.onclick = function(e){
             //seis.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(6);        
                 }
             //})
         }
         siete.onclick = function(e){
             //siete.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(7);        
                 }
             //})
         }
         ocho.onclick = function(e){
             //ocho.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(8);        
                 }
             //})
         }
         nueve.onclick = function(e){
             //nueve.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(9);        
                 }
             //})
         }
         cero.onclick = function(e){
             //cero.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaIngreso(0);        
                 }
             //})
         }
         punto.onclick = function(e){
             //punto.addEventListener("click",function(){
-                if(display.textContent.length <= 9){
+                if(display.textContent.length < 8){
                     validaPunto(".");       
                 }
             //})
