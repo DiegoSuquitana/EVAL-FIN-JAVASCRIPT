@@ -53,7 +53,7 @@ function validaPunto(ingPunto){
     }
 }
 function validaIngreso(ingreso){
- //eliminar el 0 que se encuentra por defecto en el display   
+ //eliminar el 0 que se encuentra por defecto en el display  
     if(display.textContent == "0"){
         display.textContent = ingreso;
     }
@@ -76,7 +76,7 @@ function validaSigno(){
 
 var calculadora = {
     init: function(){
-        document.onkeypress = this.eventoTamano;
+        
         //variables
         var display = document.getElementById('display');
         var suma = document.getElementById('mas');
@@ -97,42 +97,84 @@ var calculadora = {
         var ocho = document.getElementById('8');
         var nueve = document.getElementById('9');
         var cero = document.getElementById('0');
-
+        document.onkeypress = this.eventoTamano;
         //eventos
-        uno.onclick = function(e){
-            validaIngreso(1);
+        uno.onclick = function(e){    
+           // uno.addEventListener("click",function(){
+                if(display.textContent.length == 8){
+                    validaIngreso(1);        
+                }
+            //})
         }
         dos.onclick = function(e){
-            validaIngreso(2);
+            //dos.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(2);        
+                }
+            //})
         }
         tres.onclick = function(e){
-            validaIngreso(3);
+            //tres.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(3);        
+                }
+            //})
         }
         cuatro.onclick = function(e){
-            validaIngreso(4);
+            //cuatro.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(4);        
+                }
+            //})
         }
         cinco.onclick = function(e){
-            validaIngreso(5);
+            //cinco.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(5);        
+                }
+            //})
         }
         seis.onclick = function(e){
-            validaIngreso(6);
+            //seis.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(6);        
+                }
+            //})
         }
         siete.onclick = function(e){
-            validaIngreso(7);
+            //siete.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(7);        
+                }
+            //})
         }
         ocho.onclick = function(e){
-            validaIngreso(8);
+            //ocho.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(8);        
+                }
+            //})
         }
         nueve.onclick = function(e){
-            validaIngreso(9);
+            //nueve.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(9);        
+                }
+            //})
         }
         cero.onclick = function(e){
-            validaIngreso(0);
+            //cero.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaIngreso(0);        
+                }
+            //})
         }
         punto.onclick = function(e){
-            //display.textContent = display.textContent + ".";
-            validaPunto(".");
-            //document.getElementById('punto').disabled = "true";
+            //punto.addEventListener("click",function(){
+                if(display.textContent.length <= 9){
+                    validaPunto(".");       
+                }
+            //})
         }
         on.onclick = function(e){
             resetear();
