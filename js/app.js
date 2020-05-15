@@ -31,10 +31,18 @@ function resolver(){
     resetear();
 //validacion de resultado en el display 8 caracteres
     res = res.toString();
-    for(i=0 ; i < 8 ; i++){
-        tot += res[i];
+    alert(res);
+    if(res.length < 7){
+        alert("es menor a 7");
+        display.textContent=res;
     }
-    display.textContent = tot;
+    else{
+        for(i=0 ; i < 8 ; i++){
+            tot += res[i];
+        }
+        display.textContent = tot;
+    }
+    
 }
 function validaPunto(ingPunto){
 //validaciones al dar click en el punto(.)
