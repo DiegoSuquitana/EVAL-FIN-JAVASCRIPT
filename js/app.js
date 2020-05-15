@@ -28,12 +28,10 @@ function resolver(){
             res = parseFloat(valor1) / parseFloat(valor2);
             break;
     }
-    resetear();
+    //resetear();
 //validacion de resultado en el display 8 caracteres
     res = res.toString();
-    alert(res);
     if(res.length < 7){
-        alert("es menor a 7");
         display.textContent=res;
     }
     else{
@@ -90,7 +88,7 @@ function validaSigno(){
 
 var calculadora = {
     init: function(){
-        
+        document.onclick = this.eventoTamano;
         //variables
         var display = document.getElementById('display');
         var suma = document.getElementById('mas');
@@ -111,16 +109,24 @@ var calculadora = {
         var ocho = document.getElementById('8');
         var nueve = document.getElementById('9');
         var cero = document.getElementById('0');
-        document.onkeypress = this.eventoTamano;
+
+        //eventos de click 
+        uno.onmousedown = function(){uno.style.transform = "scale(95%)"}            
+        uno.onmouseup = function(){uno.style.transform = "scale(100%)"}
+        dos.onmousedown = function(){dos.style.transform = "scale(95%)"}            
+        dos.onmouseup = function(){dos.style.transform = "scale(100%)"}
         //eventos
-        uno.onclick = function(e){   
+        uno.onclick = function(e){  
+            //uno.onmousedown = function(){uno.style.transform = "scale(95%)"} 
             //validacion de caracteres en el disp 
            // uno.addEventListener("click",function(){
                 if(display.textContent.length < 8){
                     validaIngreso(1);        
                 }
             //})
+            //uno.onmouseup = function(){uno.style.transform = "scale(100%)"}
         }
+        
         dos.onclick = function(e){
             //dos.addEventListener("click",function(){
                 if(display.textContent.length < 8){
@@ -224,19 +230,25 @@ var calculadora = {
 
     },
 
+    //eventos click 2
     eventoTamano: function(event){
-        if (event.which==48) {
-            alert("aumentos");
-            elemento.style.width = "20%";
-            document.querySelectorAll("[class^='fondo']")[0].style.fontSize = "xx-large";
+        event.onmousedown = function(){uno.style.transform = "scale(95%)"}            
+        event.onmouseup = function(){uno.style.transform = "scale(100%)"}
+
+        //alert("evento tamano");
+        //if (event.which in onmousedown) {
+        //    alert("presion");
+            onmousedown = function(){uno.style.transform = "scale(95%)"}; 
+            //elemento.style.transform = "95%";
+          //  document.querySelectorAll("[class^='teclado']")[0].style.fontSize = "xx-large";
             
-        }else if (event.which==57) {
-            alert("reducir");
-            elemento.style.width = "18%"
-            document.querySelectorAll("[class^='fondo']")[0].style.fontSize = "small";
+        //}else if (event.onmouseup==true) {
+        //    alert("soltar");
+            elemento.style.transform = "100%"
+            //document.querySelectorAll("[class^='teclado']")[0].style.fontSize = "small";
             
-        }
-      },
+        //}
+    },
 }
 
 calculadora.init();
