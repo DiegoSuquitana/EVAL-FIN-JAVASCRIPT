@@ -1,10 +1,10 @@
 var valor1 = 0;
 var valor2 = 0;
-var valor3 = 0;
-var valor4 = 0;
+
 var cont = 0;
 var operacion;
-var igual;
+var igual = "";
+
 var resultado = 0;
 
 var res = 0;
@@ -25,14 +25,8 @@ function resetear(){
     tot = "";
 }
 
-function resolver(){
-    //           
+function resolver(){          
     if(cont > 0){ 
-        //alert("mayor");
-        //alert("operacion: " + operacion);
-        //valor1 = valor2;
-        alert(valor2);
-        alert(res);
         switch(operacion){
             case "+":
                 res = parseFloat(res) + valor2;
@@ -243,16 +237,8 @@ var calculadora = {
             limpiar();
         }
         igual.onclick = function(e){
-            //valor2 = parseFloat(display.textContent);
-            //alert("valor2: " + valor2);
-            if(igual == "="){ cont ++;}
-            igual = "=";
-            alert("cont:  " + cont);
-            
             resolver();
-            
-            //valor1 = valor2;
-            //alert("valor1: " + valor1);
+            cont ++;
         }
 
 
