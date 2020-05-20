@@ -1,7 +1,9 @@
 var valor1 = 0;
 var valor2 = 0;
+var valorA = 0;
 
 var cont = 0;
+var ban = 0;
 var operacion;
 var igual = "";
 
@@ -18,7 +20,9 @@ function resetear(){
     display.textContent = "0";
     valor1 = 0;
     valor2 = 0;
+    valorA = 0;
     cont = 0;
+    ban = 0;
     operacion = "";
     igual = "";
     res = 0;
@@ -41,6 +45,29 @@ function resolver(){
                 res = parseFloat(res) / valor2;
                 break;
         }
+    }
+    if(ban > 1){
+        //alert("opcion ban")
+        valor2 = parseFloat(display.textContent); 
+        //alert("valor2: " + valor2);
+        //alert("valorA: " + valorA);
+        //alert("res: " + res);
+        
+        switch(operacion){
+            case "+":
+                res = valorA + valor2;
+                break;
+            case "-":
+                res = valorA - valor2;
+                break;
+            case "*":
+                res = valorA * valor2;
+                break;
+            case "/":
+                res = valorA / valor2;
+                break;
+        }
+        ban = 0;
     }
     else{
         valor2 = parseFloat(display.textContent);
@@ -217,24 +244,52 @@ var calculadora = {
         }
         suma.onclick = function(e){
             valor1 = parseFloat(display.textContent);
-            //alert("cont: " + cont);
             operacion = "+";
             limpiar();
+            ban ++;
+            valorA = valor1 + valorA;
+            
         }
         resta.onclick = function(e){
             valor1 = parseFloat(display.textContent);
             operacion = "-";
             limpiar();
+            
+            if(ban >= 1){
+                valorA = valorA - valor1;
+                ban ++;
+            }
+            else{
+                valorA = valor1 - valorA;
+                ban ++;
+            }
+            
         }
         multiplicacion.onclick = function(e){
             valor1 = parseFloat(display.textContent);
             operacion = "*";
             limpiar();
+            if(ban >= 1){
+                valorA = valorA * valor1;
+                ban ++;
+            }
+            else{
+                valorA = valor1 * 1;
+                ban ++;
+            }
         }
         division.onclick = function(e){
             valor1 = parseFloat(display.textContent);
             operacion = "/";
             limpiar();
+            if(ban >= 1){
+                valorA = valorA / valor1;
+                ban ++;
+            }
+            else{
+                valorA = valor1 / 1;
+                ban ++;
+            }
         }
         igual.onclick = function(e){
             resolver();
