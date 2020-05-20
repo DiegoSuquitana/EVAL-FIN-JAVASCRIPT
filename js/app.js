@@ -1,6 +1,15 @@
-var valor1;
-var valor2;
+var valor1 = 0;
+var valor2 = 0;
+var valor3 = 0;
+var valor4 = 0;
+var cont = 0;
 var operacion;
+var igual;
+var resultado = 0;
+
+var res = 0;
+var tot = "";
+    
 
 function limpiar(){
     display.textContent = "";
@@ -9,36 +18,65 @@ function resetear(){
     display.textContent = "0";
     valor1 = 0;
     valor2 = 0;
+    cont = 0;
     operacion = "";
+    igual = "";
+    res = 0;
+    tot = "";
 }
+
 function resolver(){
-    var res = 0;
-    var tot = "";
-    switch(operacion){
-        case "+":
-            res = parseFloat(valor1) + parseFloat(valor2);
-            break;
-        case "-":
-            res = parseFloat(valor1) - parseFloat(valor2);
-            break;
-        case "*":
-            res = parseFloat(valor1) * parseFloat(valor2);
-            break;
-        case "/":
-            res = parseFloat(valor1) / parseFloat(valor2);
-            break;
+    //           
+    if(cont > 0){ 
+        //alert("mayor");
+        //alert("operacion: " + operacion);
+        //valor1 = valor2;
+        alert(valor2);
+        alert(res);
+        switch(operacion){
+            case "+":
+                res = parseFloat(res) + valor2;
+                break;
+            case "-":
+                res = parseFloat(res) - valor2;
+                break;
+            case "*":
+                res = parseFloat(res) * valor2;
+                break;
+            case "/":
+                res = parseFloat(res) / valor2;
+                break;
+        }
+    }
+    else{
+        valor2 = parseFloat(display.textContent);
+        switch(operacion){
+            case "+":
+                res = valor1 + valor2;
+                break;
+            case "-":
+                res = valor1 - valor2;
+                break;
+            case "*":
+                res = valor1 * valor2;
+                break;
+            case "/":
+                res = valor1 / valor2;
+                break;
+        }
     }
     //resetear();
 //validacion de resultado en el display 8 caracteres
     res = res.toString();
     if(res.length < 7){
-        display.textContent=res;
+        display.textContent = res;
     }
     else{
         for(i=0 ; i < 8 ; i++){
             tot += res[i];
         }
         display.textContent = tot;
+        res = tot;
     }
     
 }
@@ -184,29 +222,40 @@ var calculadora = {
             validaSigno();
         }
         suma.onclick = function(e){
-            valor1 = display.textContent;
+            valor1 = parseFloat(display.textContent);
+            //alert("cont: " + cont);
             operacion = "+";
             limpiar();
         }
         resta.onclick = function(e){
-            valor1 = display.textContent;
+            valor1 = parseFloat(display.textContent);
             operacion = "-";
             limpiar();
         }
         multiplicacion.onclick = function(e){
-            valor1 = display.textContent;
+            valor1 = parseFloat(display.textContent);
             operacion = "*";
             limpiar();
         }
         division.onclick = function(e){
-            valor1 = display.textContent;
+            valor1 = parseFloat(display.textContent);
             operacion = "/";
             limpiar();
         }
         igual.onclick = function(e){
-            valor2 = display.textContent;
+            //valor2 = parseFloat(display.textContent);
+            //alert("valor2: " + valor2);
+            if(igual == "="){ cont ++;}
+            igual = "=";
+            alert("cont:  " + cont);
+            
             resolver();
+            
+            //valor1 = valor2;
+            //alert("valor1: " + valor1);
         }
+
+
 
     },
 
