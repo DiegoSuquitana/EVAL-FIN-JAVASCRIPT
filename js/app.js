@@ -34,27 +34,6 @@ function resolver(){
     alert("ingreso de cont: " + cont);
     alert("ingreso de ban: " + ban);
 
-    if(cont == 0 && ban == 1){
-        alert("operaciones");
-        valor2 = parseFloat(display.textContent);
-        switch(operacion){
-            case "+":
-                res = valor1 + valor2;
-                break;
-            case "-":
-                res = valor1 - valor2;
-                break;
-            case "*":
-                res = valor1 * valor2;
-                break;
-            case "/":
-                res = valor1 / valor2;
-                break;
-        }
-        cont = 0;
-        
-        
-    }
     
         if(cont > 0 && ban == 1){ 
             alert("cont");
@@ -93,10 +72,33 @@ function resolver(){
                 res = valorA / valor2;
                 break;
         }
-        ban = 0;
-        cont = 0;
+        //ban = 0;
+        //cont = 0;
     }
-    
+    var acum = cont + 1;
+    alert("acum: " + acum);
+    alert("ban: " + ban);
+    alert("ban: " + ban + " es igual a acum: " + acum);
+    if(acum == ban){
+        //else{
+            alert("operaciones");
+            valor2 = parseFloat(display.textContent);
+            switch(operacion){
+                case "+":
+                    res = valor1 + valor2;
+                    break;
+                case "-":
+                    res = valor1 - valor2;
+                    break;
+                case "*":
+                    res = valor1 * valor2;
+                    break;
+                case "/":
+                    res = valor1 / valor2;
+                    break;
+            }
+            cont = 0;        
+        }
     
     //resetear();
 //validacion de resultado en el display 8 caracteres
@@ -307,9 +309,9 @@ var calculadora = {
         igual.onclick = function(e){
             
             resolver();
-            alert("cont : " + cont);
+            //alert("cont : " + cont);
             cont ++;
-            alert("cont : " + cont);
+            //alert("cont : " + cont);
            
         }
 
