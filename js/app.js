@@ -29,47 +29,13 @@ function resetear(){
     tot = "";
 }
 
-function resolver(){          
-    if(cont > 0){ 
-        switch(operacion){
-            case "+":
-                res = parseFloat(res) + valor2;
-                break;
-            case "-":
-                res = parseFloat(res) - valor2;
-                break;
-            case "*":
-                res = parseFloat(res) * valor2;
-                break;
-            case "/":
-                res = parseFloat(res) / valor2;
-                break;
-        }
-    }
-    if(ban > 1){
-        //alert("opcion ban")
-        valor2 = parseFloat(display.textContent); 
-        //alert("valor2: " + valor2);
-        //alert("valorA: " + valorA);
-        //alert("res: " + res);
-        
-        switch(operacion){
-            case "+":
-                res = valorA + valor2;
-                break;
-            case "-":
-                res = valorA - valor2;
-                break;
-            case "*":
-                res = valorA * valor2;
-                break;
-            case "/":
-                res = valorA / valor2;
-                break;
-        }
-        ban = 0;
-    }
-    else{
+function resolver(){  
+    
+    alert("ingreso de cont: " + cont);
+    alert("ingreso de ban: " + ban);
+
+    if(cont == 0 && ban == 1){
+        alert("operaciones");
         valor2 = parseFloat(display.textContent);
         switch(operacion){
             case "+":
@@ -85,7 +51,53 @@ function resolver(){
                 res = valor1 / valor2;
                 break;
         }
+        cont = 0;
+        
+        
     }
+    
+        if(cont > 0 && ban == 1){ 
+            alert("cont");
+            switch(operacion){
+                case "+":
+                    res = parseFloat(res) + valor2;
+                    break;
+                case "-":
+                    res = parseFloat(res) - valor2;
+                    break;
+                case "*":
+                    res = parseFloat(res) * valor2;
+                    break;
+                case "/":
+                    res = parseFloat(res) / valor2;
+                    break;
+            }
+        }
+        
+    
+    if(ban > 1 && cont == 0){
+        alert("ban");
+        //alert("res: "+ res);
+        valor2 = parseFloat(display.textContent); 
+        switch(operacion){
+            case "+":
+                res = valorA + valor2;
+                break;
+            case "-":
+                res = valorA - valor2;
+                break;
+            case "*":
+                res = valorA * valor2;
+                break;
+            case "/":
+                res = valorA / valor2;
+                break;
+        }
+        ban = 0;
+        cont = 0;
+    }
+    
+    
     //resetear();
 //validacion de resultado en el display 8 caracteres
     res = res.toString();
@@ -248,6 +260,7 @@ var calculadora = {
             limpiar();
             ban ++;
             valorA = valor1 + valorA;
+            //alert("ban: " + ban);
             
         }
         resta.onclick = function(e){
@@ -292,8 +305,12 @@ var calculadora = {
             }
         }
         igual.onclick = function(e){
+            
             resolver();
+            alert("cont : " + cont);
             cont ++;
+            alert("cont : " + cont);
+           
         }
 
 
