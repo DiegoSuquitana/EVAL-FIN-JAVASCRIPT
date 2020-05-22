@@ -1,9 +1,12 @@
 var valor1 = 0;
 var valor2 = 0;
 var valorA = 0;
+var valorNum = "";
+var valorOpe = "";
 
 var cont = 0;
 var ban = 0;
+var ban2 = 0;
 var operacion;
 var igual = "";
 
@@ -21,6 +24,9 @@ function resetear(){
     valor1 = 0;
     valor2 = 0;
     valorA = 0;
+    valorNum = "";
+    valorOpe = "";
+
     cont = 0;
     ban = 0;
     operacion = "";
@@ -29,6 +35,70 @@ function resetear(){
     tot = "";
 }
 
+function OperacionCadenas(){
+    var j = 0;
+    for (var i=0; i < valorNum.length; i++) {
+        alert("i: " + i);
+        alert("valorNum: " + valorNum[i]);
+            
+        alert("j: " + j);
+        
+            alert("valorOpe: " + valorOpe[j]);
+            if(i==0 && j==0){
+                alert("if");
+                switch(valorOpe[j]){
+                    case "+":
+                        res = parseFloat(valorNum[i]) + parseFloat(valorNum[i+1]);
+                        alert("res: " + res);
+                        i++;
+                        j++;
+                        break;
+                    case "-":
+                        res = parseFloat(valorNum[i]) - parseFloat(valorNum[i+1]);
+                        alert("res: " + res);
+                        i++;
+                        j++;
+                        break;
+                    case "*":
+                        res = parseFloat(valorNum[i]) * parseFloat(valorNum[i+1]);
+                        alert("res: " + res);
+                        i++;
+                        j++;
+                        break;
+                    case "/":
+                        res = parseFloat(valorNum[i]) / parsefloat(valorNum[i+1]);
+                        alert("res: " + res);
+                        i++;
+                        j++;
+                        break;
+                }
+            }else{
+                alert("else");
+                switch(valorOpe[j]){
+                    case "+":
+                        res = res + parseFloat(valorNum[i]);
+                        alert("res: " + res);
+                        j++;
+                        break;
+                    case "-":
+                        res = res - parseFloat(valorNum[i]);
+                        alert("res: " + res);
+                        j++;
+                        break;
+                    case "*":
+                        res = res * parseFloat(valorNum[i]);
+                        alert("res: " + res);
+                        j++;
+                        break;
+                    case "/":
+                        res = res / parseFloat(valorNum[i]);
+                        alert("res: " + res);
+                        j++;
+                        break;
+                }
+            }        
+     }
+}
 function resolver(){  
     
     alert("ingreso de cont: " + cont);
@@ -56,6 +126,9 @@ function resolver(){
     
     if(ban > 1 && cont == 0){
         alert("ban");
+        valorNum += display.textContent;
+        OperacionCadenas();
+        /*
         //alert("res: "+ res);
         valor2 = parseFloat(display.textContent); 
         switch(operacion){
@@ -73,8 +146,9 @@ function resolver(){
                 break;
         }
         //ban = 0;
-        //cont = 0;
+        //cont = 0;*/
     }
+    alert("cont+1: " + cont + 1);
     var acum = cont + 1;
     alert("acum: " + acum);
     alert("ban: " + ban);
@@ -196,13 +270,13 @@ var calculadora = {
         uno.onclick = function(e){  
             //validacion de caracteres en el display 
                 if(display.textContent.length < 8){
-                    validaIngreso(1);        
+                    validaIngreso(1);   
                 }
         }
         
         dos.onclick = function(e){
                 if(display.textContent.length < 8){
-                    validaIngreso(2);        
+                    validaIngreso(2);    
                 }
         }
         tres.onclick = function(e){
@@ -263,7 +337,10 @@ var calculadora = {
             ban ++;
             valorA = valor1 + valorA;
             //alert("ban: " + ban);
-            
+            valorNum += valor1;
+            valorOpe += operacion;
+            alert("valorNum: " + valorNum);
+            alert("valorOpe: " + valorOpe);
         }
         resta.onclick = function(e){
             valor1 = parseFloat(display.textContent);
@@ -278,7 +355,10 @@ var calculadora = {
                 valorA = valor1 - valorA;
                 ban ++;
             }
-            
+            valorNum += valor1;
+            valorOpe += operacion;
+            alert("valorNum: " + valorNum);
+            alert("valorOpe: " + valorOpe);
         }
         multiplicacion.onclick = function(e){
             valor1 = parseFloat(display.textContent);
@@ -292,6 +372,10 @@ var calculadora = {
                 valorA = valor1 * 1;
                 ban ++;
             }
+            valorNum += valor1;
+            valorOpe += operacion;
+            alert("valorNum: " + valorNum);
+            alert("valorOpe: " + valorOpe);
         }
         division.onclick = function(e){
             valor1 = parseFloat(display.textContent);
@@ -305,6 +389,10 @@ var calculadora = {
                 valorA = valor1 / 1;
                 ban ++;
             }
+            valorNum += valor1;
+            valorOpe += operacion;
+            alert("valorNum: " + valorNum);
+            alert("valorOpe: " + valorOpe);
         }
         igual.onclick = function(e){
             
@@ -314,8 +402,6 @@ var calculadora = {
             //alert("cont : " + cont);
            
         }
-
-
 
     },
 
