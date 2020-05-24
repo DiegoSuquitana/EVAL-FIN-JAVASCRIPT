@@ -1,12 +1,9 @@
 var valor1 = 0;
 var valor2 = 0;
 var valorA = 0;
-var valorNum = "";
-var valorOpe = "";
 
 var cont = 0;
 var ban = 0;
-var ban2 = 0;
 var operacion;
 var igual = "";
 
@@ -19,6 +16,7 @@ var tot = "";
 function limpiar(){
     display.textContent = "";
 }
+
 function resetear(){
     display.textContent = "0";
     valor1 = 0;
@@ -35,76 +33,10 @@ function resetear(){
     tot = "";
 }
 
-function OperacionCadenas(){
-    var j = 0;
-    for (var i=0; i < valorNum.length; i++) {
-        alert("i: " + i);
-        alert("valorNum: " + valorNum[i]);
-            
-        alert("j: " + j);
-        
-            alert("valorOpe: " + valorOpe[j]);
-            if(i==0 && j==0){
-                alert("if");
-                switch(valorOpe[j]){
-                    case "+":
-                        res = parseFloat(valorNum[i]) + parseFloat(valorNum[i+1]);
-                        alert("res: " + res);
-                        i++;
-                        j++;
-                        break;
-                    case "-":
-                        res = parseFloat(valorNum[i]) - parseFloat(valorNum[i+1]);
-                        alert("res: " + res);
-                        i++;
-                        j++;
-                        break;
-                    case "*":
-                        res = parseFloat(valorNum[i]) * parseFloat(valorNum[i+1]);
-                        alert("res: " + res);
-                        i++;
-                        j++;
-                        break;
-                    case "/":
-                        res = parseFloat(valorNum[i]) / parsefloat(valorNum[i+1]);
-                        alert("res: " + res);
-                        i++;
-                        j++;
-                        break;
-                }
-            }else{
-                alert("else");
-                switch(valorOpe[j]){
-                    case "+":
-                        res = res + parseFloat(valorNum[i]);
-                        alert("res: " + res);
-                        j++;
-                        break;
-                    case "-":
-                        res = res - parseFloat(valorNum[i]);
-                        alert("res: " + res);
-                        j++;
-                        break;
-                    case "*":
-                        res = res * parseFloat(valorNum[i]);
-                        alert("res: " + res);
-                        j++;
-                        break;
-                    case "/":
-                        res = res / parseFloat(valorNum[i]);
-                        alert("res: " + res);
-                        j++;
-                        break;
-                }
-            }        
-     }
-}
 function resolver(){  
-    
+    var acum = cont + 1;
     alert("ingreso de cont: " + cont);
     alert("ingreso de ban: " + ban);
-
-    
         if(cont > 0 && ban == 1){ 
             alert("cont");
             switch(operacion){
@@ -126,10 +58,7 @@ function resolver(){
     
     if(ban > 1 && cont == 0){
         alert("ban");
-        valorNum += display.textContent;
-        OperacionCadenas();
-        /*
-        //alert("res: "+ res);
+        valorNum += display.textContent;     
         valor2 = parseFloat(display.textContent); 
         switch(operacion){
             case "+":
@@ -145,16 +74,12 @@ function resolver(){
                 res = valorA / valor2;
                 break;
         }
-        //ban = 0;
-        //cont = 0;*/
+        ban = 0;
+        cont = 0;
     }
-    alert("cont+1: " + cont + 1);
-    var acum = cont + 1;
-    alert("acum: " + acum);
-    alert("ban: " + ban);
-    alert("ban: " + ban + " es igual a acum: " + acum);
+    
+   
     if(acum == ban){
-        //else{
             alert("operaciones");
             valor2 = parseFloat(display.textContent);
             switch(operacion){
@@ -171,11 +96,11 @@ function resolver(){
                     res = valor1 / valor2;
                     break;
             }
-            cont = 0;        
+            cont = 0; 
+            ban = 1;       
         }
-    
-    //resetear();
-//validacion de resultado en el display 8 caracteres
+        
+ //validacion de resultado en el display 8 caracteres
     res = res.toString();
     if(res.length < 7){
         display.textContent = res;
@@ -336,11 +261,7 @@ var calculadora = {
             limpiar();
             ban ++;
             valorA = valor1 + valorA;
-            //alert("ban: " + ban);
-            valorNum += valor1;
-            valorOpe += operacion;
-            alert("valorNum: " + valorNum);
-            alert("valorOpe: " + valorOpe);
+            
         }
         resta.onclick = function(e){
             valor1 = parseFloat(display.textContent);
@@ -355,10 +276,7 @@ var calculadora = {
                 valorA = valor1 - valorA;
                 ban ++;
             }
-            valorNum += valor1;
-            valorOpe += operacion;
-            alert("valorNum: " + valorNum);
-            alert("valorOpe: " + valorOpe);
+            
         }
         multiplicacion.onclick = function(e){
             valor1 = parseFloat(display.textContent);
@@ -372,10 +290,7 @@ var calculadora = {
                 valorA = valor1 * 1;
                 ban ++;
             }
-            valorNum += valor1;
-            valorOpe += operacion;
-            alert("valorNum: " + valorNum);
-            alert("valorOpe: " + valorOpe);
+            
         }
         division.onclick = function(e){
             valor1 = parseFloat(display.textContent);
@@ -389,18 +304,12 @@ var calculadora = {
                 valorA = valor1 / 1;
                 ban ++;
             }
-            valorNum += valor1;
-            valorOpe += operacion;
-            alert("valorNum: " + valorNum);
-            alert("valorOpe: " + valorOpe);
         }
         igual.onclick = function(e){
             
             resolver();
-            //alert("cont : " + cont);
             cont ++;
-            //alert("cont : " + cont);
-           
+            
         }
 
     },
