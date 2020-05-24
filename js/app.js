@@ -34,7 +34,7 @@ function resetear(){
 }
 
 function resolver(){  
-    var acum = cont + 1;
+    
         if(cont > 0 && ban == 1){ 
             switch(operacion){
                 case "+":
@@ -50,8 +50,7 @@ function resolver(){
                     res = parseFloat(res) / valor2;
                     break;
             }
-            cont = 0; 
-            ban = 1; 
+             
         }
         
     
@@ -72,11 +71,10 @@ function resolver(){
                 res = valorA / valor2;
                 break;
         }
-        ban = 1;
-        cont = 0;
+        
     }
     
-   
+    var acum = cont + 1;
     if(acum == ban){
             valor2 = parseFloat(display.textContent);
             switch(operacion){
@@ -93,8 +91,7 @@ function resolver(){
                     res = valor1 / valor2;
                     break;
             }
-            cont = 0; 
-            ban = 1;       
+        
         }
         
  //validacion de resultado en el display 8 caracteres
@@ -109,7 +106,8 @@ function resolver(){
         display.textContent = tot;
         res = tot;
     }
-    
+    cont = 0; 
+    ban = 1;       
 }
 function validaPunto(ingPunto){
 //validaciones al dar click en el punto(.)
