@@ -35,10 +35,7 @@ function resetear(){
 
 function resolver(){  
     var acum = cont + 1;
-    alert("ingreso de cont: " + cont);
-    alert("ingreso de ban: " + ban);
         if(cont > 0 && ban == 1){ 
-            alert("cont");
             switch(operacion){
                 case "+":
                     res = parseFloat(res) + valor2;
@@ -53,11 +50,12 @@ function resolver(){
                     res = parseFloat(res) / valor2;
                     break;
             }
+            cont = 0; 
+            ban = 1; 
         }
         
     
     if(ban > 1 && cont == 0){
-        alert("ban");
         valorNum += display.textContent;     
         valor2 = parseFloat(display.textContent); 
         switch(operacion){
@@ -80,7 +78,6 @@ function resolver(){
     
    
     if(acum == ban){
-            alert("operaciones");
             valor2 = parseFloat(display.textContent);
             switch(operacion){
                 case "+":
