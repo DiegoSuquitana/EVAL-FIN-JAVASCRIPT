@@ -72,7 +72,7 @@ function resolver(){
                 res = valorA / valor2;
                 break;
         }
-        ban = 0;
+        ban = 1;
         cont = 0;
     }
     
